@@ -1,11 +1,12 @@
 
 on:
     push:
-        branches: ["main"]
+        tags:
+            - 'v*'
     workflow_dispatch:
 
 jobs:
-    pyinstaller-build:
+    build:
         runs-on: windows-latest
         steps:
             -
@@ -15,3 +16,22 @@ jobs:
                     spec: 'build.spec'
                     requirements: 'requirements.txt'
                     upload_exe_with_name: "BookReader"
+    
+    release:
+        runs-on: ubuntu-latest
+        needs: build
+        
+        steps:
+            -
+                name: Download artifact
+                uses: actions/download-artifact@v5
+                with:
+                    name: BookReader
+                    path: release-files
+            
+            -
+                name: Create release
+                uses: ncipollo/release-action@v1
+                with:
+                    artifacts: "release-files/**"
+                    allowUpdates: true
