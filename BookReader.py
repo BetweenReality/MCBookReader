@@ -27,7 +27,9 @@ def base_path() -> str:
 
 BASE_DIR = base_path()
 
-FAKE_APP_ID: str = u"br.mc.bookreader.1.0.0"
+APPLICATION_NAME = "BookReader"
+APPLICATION_VERSION: str = "1.0.0"
+FAKE_APP_ID: str = u"br.mc." + APPLICATION_NAME + "." + APPLICATION_VERSION
 
 IMG_BOOK_ICON: str       = BASE_DIR + "/resources/images/written_book.ico"
 IMG_BOOK: str            = BASE_DIR + "/resources/images/book.png"
@@ -64,6 +66,9 @@ def error(title: str, msg: str) -> int:
 def main():
     app: QApplication = QApplication(sys.argv)
     window: MainWindow = MainWindow()
+    
+    app.setApplicationName(APPLICATION_NAME)
+    app.setApplicationVersion(APPLICATION_VERSION)
     
     window.setWindowTitle("Minecraft Book Reader")
     app.setWindowIcon(QIcon(IMG_BOOK_ICON))
