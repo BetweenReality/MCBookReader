@@ -606,6 +606,9 @@ class MainWindow(QMainWindow):
         self.textArea.setWordWrap(True)
         self.textArea.setTextFormat(QtCore.Qt.TextFormat.RichText)
         
+        # We don't have text editing capability yet
+        self.textArea.setAttribute(QtCore.Qt.WidgetAttribute.WA_TransparentForMouseEvents, True)
+        
         # Not exact, but will always be enough to overflow downward as much as we need
         # You're not supposed to go down that far anyway but Minecraft allows it in specific cases so I need to replicate that behavior
         self.textArea.setFixedSize(self.background.size())
