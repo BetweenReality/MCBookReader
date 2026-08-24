@@ -35,9 +35,13 @@ jobs:
                     path: release-files
             
             -
+                name: Zip Artifact
+                run: zip -r BookReader.zip release-files/
+            
+            -
                 name: Create release
                 uses: ncipollo/release-action@v1
                 with:
-                    artifacts: "BookReader"
+                    artifacts: "BookReader.zip"
                     allowUpdates: true
                     artifactErrorsFailBuild: true
