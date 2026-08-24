@@ -28,7 +28,7 @@ def base_path() -> str:
 BASE_DIR = base_path()
 
 APPLICATION_NAME = "BookReader"
-APPLICATION_VERSION: str = "1.0.0"
+APPLICATION_VERSION: str = "1.0.1"
 FAKE_APP_ID: str = u"br.mc." + APPLICATION_NAME + "." + APPLICATION_VERSION
 
 IMG_BOOK_ICON: str       = BASE_DIR + "/resources/images/written_book.ico"
