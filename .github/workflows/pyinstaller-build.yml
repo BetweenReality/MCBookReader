@@ -38,5 +38,5 @@ jobs:
                 name: Create release
                 uses: ncipollo/release-action@v1
                 with:
-                    artifacts: "release-files/**"
+                    artifacts: "release-files"
                     allowUpdates: true
